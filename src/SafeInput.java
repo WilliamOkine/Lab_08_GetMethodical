@@ -2,7 +2,16 @@ import java.util.Scanner;
 
 public class SafeInput {
 
+// Get Non Zero Length String
 
+    public static String getNonZeroLenStr(Scanner scanner, String message) {
+        String input = "";
+        do {
+            System.out.println(message);
+            input = scanner.nextLine().trim();
+        } while (input.isEmpty());
+        return input;
+    }
 
     //Get Non empty String
     public static String getNonEmptyString(Scanner scanner, String message) {
@@ -13,6 +22,7 @@ public class SafeInput {
         } while (input.isEmpty());
         return input;
     }
+
     //GetInt
     public static int getInt(Scanner pipe, String prompt) {
         int value = 0; // Default value
@@ -61,7 +71,7 @@ public class SafeInput {
 
 
     public static int getRangedInt(Scanner pipe, String prompt, int low, int high) {
-        int value;
+        int value = 0;
         boolean validInput = false;
 
         do {
@@ -111,6 +121,7 @@ public class SafeInput {
 
         return value;
     }
+
     //Get Y/N Confirm
     public static boolean getYNConfirm(Scanner pipe, String prompt) {
         boolean confirmed = false;
@@ -157,5 +168,40 @@ public class SafeInput {
         } while (!validInput);
 
         return input;
+    }
+
+
+    // Pretty Header
+    public static void prettyHeader(String msg) {
+        int headerWidth = 60;
+        int msgLength = msg.length();
+        int spaceLength = (headerWidth - msgLength - 6) / 2;
+
+
+        for (int i = 0; i < headerWidth; i++) {
+            System.out.print("*");
+        }
+        System.out.println();
+
+
+        System.out.print("***");
+        for (int i = 0; i < spaceLength; i++) {
+            System.out.print(" ");
+        }
+        System.out.print(msg);
+        for (int i = 0; i < spaceLength; i++) {
+            System.out.print(" ");
+        }
+
+        if (msgLength % 2 != 0) {
+            System.out.print(" ");
+        }
+        System.out.println("***");
+
+
+        for (int i = 0; i < headerWidth; i++) {
+            System.out.print("*");
+        }
+        System.out.println();
     }
 }
